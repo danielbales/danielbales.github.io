@@ -1,0 +1,83 @@
+.container-fluid {
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+    max-width: 1050px;
+    font-family: 'Lato', sans-serif;
+}
+
+.collapse, .navbar-collapse {
+    float: right;
+}
+
+.new-zealand {
+    max-width: 100%;
+}
+
+.tahiti {
+    max-width: 100%;
+}
+
+.fiji {
+    max-width: 100%;
+}
+
+.central-coast {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sundar {
+    max-width: 100%;
+}
+
+.my-skills {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40%;
+    padding: 15px 0px 25px 0px;
+}
+
+@media (max-width: 720px) {
+    .my-skills {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+        padding-top: 15px;
+    };
+}
+
+.navbar-inverse {
+    padding: 30px 0px 30px 0px;
+}
+
+.button {
+    padding: 25px 0px 15px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    font-size: 25px;
+}
+
+#button {
+    background-color: #0007dc;
+    border-color: #0007dc;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+}
+
+.footer {
+    display: flex;
+    max-width: 100%;
+    padding: 50px 0px 50px 0px;
+}
+
+#footer-links {
+  color: white;
+}
