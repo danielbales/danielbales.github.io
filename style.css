@@ -11,6 +11,10 @@
     float: right;
 }
 
+.navbar-brand {
+  margin-top: -20px;
+}
+
 .new-zealand {
     max-width: 100%;
 }
