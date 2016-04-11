@@ -1,9 +1,9 @@
-.container-fluid {
+/*.container-fluid {
     font-family: 'Lato', sans-serif;
-}
+}*/
 
 .container {
-    max-width: 1050px;
+    max-width: 1000px;
     font-family: 'Lato', sans-serif;
 
 }
@@ -48,8 +48,6 @@
 
 .central-coast {
     max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
 }
