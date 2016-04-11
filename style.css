@@ -61,25 +61,28 @@
 .alyo {
     max-width: 100%;
     padding-top: 10px;
-    display: flex;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    background-color: gray;
 }
 
-.anvato {
+.anvato-bg {
     max-width: 100%;
     padding-top: 10px;
-    display: flex;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    background-color: #3d8d94;
 }
 
 .scimage {
     max-width: 100%;
     padding-top: 10px;
-    display: flex;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    background-color: blue;
 }
 
 .sundar {
