@@ -5,6 +5,7 @@
 .container {
     max-width: 1050px;
     font-family: 'Lato', sans-serif;
+
 }
 
 .collapse, .navbar-collapse {
@@ -60,7 +61,8 @@
 
 .alyo {
     max-width: 100%;
-    padding-top: 10px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -69,24 +71,29 @@
 
 .anvato-bg {
     max-width: 100%;
-    padding-top: 10px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: #3d8d94;
+    background-color: #88171a;
 }
 
 .scimage {
     max-width: 100%;
-    padding-top: 10px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: blue;
+    background-color: #287ac7;
 }
 
 .sundar {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
 }
 
 .my-skills {
