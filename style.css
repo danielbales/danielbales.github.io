@@ -1,5 +1,5 @@
 .container-fluid {
-  font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -12,24 +12,29 @@
 }
 
 .navbar-brand {
-  margin-top: -20px;
+    margin-top: -20px;
 }
 
 .nav-links {
-  display: block;
-  float: none;
+    display: block;
+    float: none;
 }
 
 .footer-logo {
-  margin-top: -20px;
+    margin-top: -20px;
 }
 
 .homepage-button {
-  margin: 20px;
+    margin: 20px;
 }
 
 .new-zealand {
     max-width: 100%;
+}
+
+.company-logo {
+    padding: 100px;
+    background-color: gray;
 }
 
 .tahiti {
@@ -53,8 +58,32 @@
     padding-top: 10px;
 }
 
+.alyo {
+    max-width: 100%;
+    padding-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.anvato {
+    max-width: 100%;
+    padding-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scimage {
+    max-width: 100%;
+    padding-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .sundar {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .my-skills {
