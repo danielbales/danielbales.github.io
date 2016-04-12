@@ -2,8 +2,32 @@
     font-family: 'Lato', sans-serif;
 }*/
 
+.thumbnail {
+  position: relative;
+  margin: auto;
+}
+
+.img-responsive {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-text {
+  top: 285px;
+  left: 430px;
+  color: white;
+  position: absolute;
+}
+
+.hero-sub-text {
+  top: 340px;
+  left: 427px;
+  color: white;
+  position: absolute;
+}
+
 .container {
-    max-width: 1000px;
     font-family: 'Lato', sans-serif;
 
 }
@@ -31,11 +55,9 @@
 
 .new-zealand {
     max-width: 100%;
-}
-
-.company-logo {
-    padding: 100px;
-    background-color: gray;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tahiti {
@@ -131,6 +153,6 @@
 
 .company-box {
     border-style: solid;
-    border-color: gray;
+    border-color: black;
     background-color: white;
 }
