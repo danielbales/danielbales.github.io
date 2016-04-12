@@ -29,7 +29,6 @@
 
 .container {
     font-family: 'Lato', sans-serif;
-
 }
 
 .collapse, .navbar-collapse {
@@ -153,6 +152,6 @@
 
 .company-box {
     border-style: solid;
-    border-color: black;
+    border-color: #f9f9f9;
     background-color: white;
 }
