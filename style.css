@@ -29,6 +29,7 @@
 
 .container {
     font-family: 'Lato', sans-serif;
+    max-width: 1200px;
 }
 
 .collapse, .navbar-collapse {
@@ -80,8 +81,6 @@
 
 .alyo {
     max-width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -89,8 +88,6 @@
 
 .anvato-bg {
     max-width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -98,8 +95,6 @@
 
 .sea {
     max-width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -152,6 +147,14 @@
 
 .company-box {
     border-style: solid;
-    border-color: #f9f9f9;
+    border-color: #CCC;
+    border-radius: 5px;
     background-color: white;
+    box-shadow: 0 0 10px black;
+    padding: 50px;
+    margin: 10px;
+}
+
+.featured-company {
+  display: block;
 }
