@@ -133,6 +133,13 @@
     };
 }
 
+@media (max-width: 720px) {
+    .footer-logo {
+      display: none;
+    };
+}
+
+
 .navbar-inverse {
     padding: 30px 0px 30px 0px;
 }
