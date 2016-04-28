@@ -50,6 +50,15 @@
     margin-right: auto;
 }
 
+#hp-hero {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-copy {
+  padding-bottom: 20px;
+}
+
 .footer-logo {
     margin-top: -20px;
 }
