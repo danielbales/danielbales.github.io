@@ -125,12 +125,6 @@
 }
 
 @media (max-width: 720px) {
-    .container-1 {
-      padding-left: 25px;
-    };
-}
-
-@media (max-width: 720px) {
     .hero-copy {
       padding-left: 30px;
       padding-right: 30px;
