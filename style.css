@@ -59,6 +59,12 @@
   padding-bottom: 20px;
 }
 
+#featured-work-row-text {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .footer-logo {
     margin-top: -20px;
 }
