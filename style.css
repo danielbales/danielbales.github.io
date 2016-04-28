@@ -11,6 +11,10 @@
   margin: auto;
 }*/
 
+.row {
+  max-width: 100%;
+}
+
 .img-responsive {
   display: block;
   margin-left: auto;
