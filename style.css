@@ -195,3 +195,7 @@
 .footer-logo {
   margin-bottom: 20px;
 }
+
+#footer-nav {
+  margin-bottom: -20px;
+}
