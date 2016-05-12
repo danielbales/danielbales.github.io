@@ -6,6 +6,13 @@
   font-family: 'Lato', sans-serif;
 }
 
+#quote {
+  font-size: 24px;
+}
+
+#quote-name {
+  font-size: 20px;
+}
 
 /*.thumbnail {
   position: relative;
@@ -118,11 +125,40 @@
     margin-right: auto;
 }
 
+#ucsd-resume {
+    width: 16%;
+    padding-bottom: 10px;
+}
+
+#vw-resume {
+    width: 17%;
+}
+
+#scimage-resume {
+    width: 15%;
+}
+
+#csm-resume {
+    width: 16%;
+    padding-bottom: 10px;
+}
+
+#hubspot-resume {
+    width: 20%;
+    padding-bottom: 10px;
+}
+
 .my-skills {
     display: block;
     margin-left: auto;
     margin-right: auto;
     max-width: 40%;
+}
+
+@media (max-width: 720px) {
+    p {
+      text-align: center;
+    };
 }
 
 @media (max-width: 720px) {
@@ -150,6 +186,37 @@
 @media (max-width: 720px) {
     .footer-logo {
       display: none;
+    };
+}
+@media (max-width: 720px) {
+    .lead {
+      text-align: center;
+    };
+}
+
+@media (max-width: 720px) {
+    #ucsd-resume, #vw-resume  {
+      width: 90%;
+      margin-left: auto;
+    margin-right: auto;
+    display: block;
+    };
+}
+
+@media (max-width: 720px) {
+    #scimage-resume, #csm-resume, #hubspot-resume  {
+      width: 70%;
+      margin-left: auto;
+    margin-right: auto;
+    display: block;
+    };
+}
+
+@media (max-width: 720px) {
+    #anvato-resume  {
+      margin-left: auto;
+    margin-right: auto;
+    display: block;
     };
 }
 
