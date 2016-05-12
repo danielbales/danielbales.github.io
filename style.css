@@ -6,6 +6,7 @@
   font-family: 'Lato', sans-serif;
 }
 
+
 /*.thumbnail {
   position: relative;
   margin: auto;
@@ -153,6 +154,13 @@
 }
 
 
+@media (max-width: 790px) {
+    #footer-hamburger {
+      display: none;
+    };
+}
+
+
 .navbar-inverse {
     padding: 30px 0px 30px 0px;
 }
@@ -198,4 +206,25 @@
 
 #footer-nav {
   margin-bottom: -20px;
+}
+
+.footer-links {
+  display: inline-flex;
+  float: right;
+}
+
+#footer-home {
+  padding: 10px 10px 0px 10px;
+}
+
+#footer-about-me {
+  padding: 10px 10px 0px 10px;
+}
+
+#footer-resume {
+  padding: 10px 10px 0px 10px;
+}
+
+#footer-contact {
+  padding: 10px 10px 0px 10px;
 }
