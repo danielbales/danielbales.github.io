@@ -134,6 +134,10 @@
     width: 17%;
 }
 
+#google-resume {
+    width: 10%;
+}
+
 #scimage-resume {
     width: 15%;
 }
@@ -219,7 +223,7 @@
 }
 
 @media (max-width: 720px) {
-    #anvato-resume  {
+    #anvato-resume, #google-resume  {
       margin-left: auto;
     margin-right: auto;
     display: block;
