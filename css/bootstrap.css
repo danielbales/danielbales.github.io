@@ -2734,8 +2734,6 @@ input[type="button"].btn-block {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  background-color: #104b84;
-  border-color: #104b84;
 }
 }
 @media (min-width: 768px) {
