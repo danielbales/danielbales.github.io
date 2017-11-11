@@ -2744,8 +2744,6 @@ input[type="button"].btn-block {
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
-    background-color: #F8F8F8;
-    border-color: #E7E7E7;
   }
 }
 .navbar-collapse {
