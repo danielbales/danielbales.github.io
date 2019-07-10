@@ -1,0 +1,53 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #343a40;
+  background-color: #fbfbfb;
+}
+
+h2 {
+  padding:32px;
+}
+
+.portfolio-button {
+  margin: 16px 0px 16px 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+/* Make the image fully responsive */
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+
+.carousel-container {
+  padding-bottom:64px;
+}
+
+.herotext-container {
+  padding-top: 32px;
+}
+
+.middlerow-container {
+  padding: 32px;
+}
+
+.cardaligns {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 16px;
+  padding: 5px;
+  color: #343a40;
+  background-color: #efefef;
+}
+
+.cta {
+  padding: 64px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  background-color: #efefef;
+  align-content: center;
+}
