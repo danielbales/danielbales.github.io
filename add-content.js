@@ -13,3 +13,7 @@ if (hourNow > 18) {
 }
 
 document.write("<h1>" + greeting + "</h1>");
+
+//beginning of game
+
+//End of Game
