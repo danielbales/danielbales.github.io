@@ -4,6 +4,10 @@ body {
   background-color: #fbfbfb;
 }
 
+.hp-head {
+  text-align: center;
+}
+
 h2 {
   padding:32px;
 }
