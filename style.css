@@ -84,3 +84,14 @@ h2 {
   margin-left: auto;
   margin-right: auto;
 }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
