@@ -3,20 +3,12 @@ body {
   color: #343a40;
 }
 
-.hp-head {
+.hp-header-text {
   text-align: center;
 }
 
 h2 {
   padding:32px;
-}
-
-.portfolio-button {
-  margin: 16px 0px 16px 0px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
 }
 
 /* Make the image fully responsive */
@@ -29,69 +21,23 @@ h2 {
   padding-bottom:64px;
 }
 
-.herotext-container {
-  padding-top: 32px;
-}
 
 .middlerow-container {
   padding: 32px;
 }
 
-.cardaligns {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 16px;
-  padding: 5px;
-  color: #343a40;
-  background-color: #efefef;
+.mdl-btn-spacing {
+  padding-top: 16px;
+  padding-bottom: 32px;
 }
 
 .cta {
   padding: 64px;
   margin-top: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 64;
   background-color: #efefef;
-  align-content: center;
 }
 
 .contactpage {
   padding: 225px;
 }
-
-.aboutdropdowns {
-  display: flex;
-  margin-bottom: 16px;
-  margin-right: auto;
-}
-
-.companylogo {
-  margin: 16px 0px 16px 0px;
-}
-
-.portfolio-modals {
-  body {font-family: Arial, Helvetica, sans-serif;
-  }
-
-#myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.port-image {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-      * {
-        padding: 0;
-        margin: 0;
-      }
-
-      canvas {
-        background: #eee;
-        display: block;
-        margin: 0 auto;
-      }
