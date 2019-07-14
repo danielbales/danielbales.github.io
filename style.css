@@ -13,7 +13,7 @@ h2 {
 }
 
 .brandlogs {
-  width: 100%;
+  overflow: visible;
 }
 
 /* Make the image fully responsive */
