@@ -12,6 +12,10 @@ h2 {
   padding:32px;
 }
 
+.brandlogs {
+  width: 100%;
+}
+
 /* Make the image fully responsive */
   .carousel-inner img {
       width: 100%;
