@@ -21,6 +21,13 @@ h2 {
   padding-bottom:64px;
 }
 
+.col-website {
+  border: 1px solid;
+  border-radius: 6px;
+  border-color: #dee2e6;
+  padding: 16px;
+  margin: 32px;
+}
 
 .middlerow-container {
   padding: 32px;
