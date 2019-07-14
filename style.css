@@ -47,6 +47,11 @@ h2 {
   padding-bottom: 32px;
 }
 
+.row-spacing {
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
 .cta {
   padding: 64px;
   margin-top: 32px;
@@ -78,4 +83,9 @@ h2 {
 .port-page-middlerow {
   margin-bottom: 32px;
   padding-left:32px;
+}
+
+
+.screenshots {
+  max-width: 35%;
 }
