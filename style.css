@@ -1,6 +1,6 @@
 body {
   font-family: 'Amatic SC', cursive;
-font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #343a40;
 }
 
@@ -9,7 +9,7 @@ font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-  padding:32px;
+  padding: 32px;
 }
 
 .brandlogs {
@@ -17,13 +17,13 @@ h2 {
 }
 
 /* Make the image fully responsive */
-  .carousel-inner img {
-      width: 100%;
-      height: 100%;
-  }
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
 
 .carousel-container {
-  padding-bottom:64px;
+  padding-bottom: 64px;
 }
 
 .col-website {
@@ -31,7 +31,6 @@ h2 {
   border-radius: 6px;
   border-color: #dee2e6;
   padding: 10px;
-  margin: 32px;
 }
 
 .middlerow-container {
@@ -77,10 +76,17 @@ h2 {
 
 .port-page-title {
   margin-top: 32px;
-  padding-left:16px;
+  padding-left: 16px;
 }
 
 .port-page-middlerow {
   margin-bottom: 32px;
-  padding-left:32px;
+  margin-top: 32px;
+  padding-left: 32px;
+}
+
+.paypal-area {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
