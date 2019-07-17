@@ -51,10 +51,16 @@ h2 {
   padding-bottom: 64px;
 }
 
-.cta {
+.cta-bottom {
   padding: 64px;
   margin-top: 32px;
-  margin-bottom: 64;
+  background-color: #efefef;
+}
+
+.cta-mid {
+  padding: 64px;
+  margin-top: 32px;
+  margin-bottom: 64px;
   background-color: #efefef;
 }
 
