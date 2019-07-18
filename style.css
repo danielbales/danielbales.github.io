@@ -69,34 +69,6 @@ h2 {
   padding: 225px;
 }
 
-.port-row-btn {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.paypal {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.port-page-title {
-  margin-top: 32px;
-  padding-left: 16px;
-}
-
-.port-page-middlerow {
-  margin-bottom: 32px;
-  margin-top: 32px;
-  padding-left: 32px;
-}
-
-.paypal-area {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 /* Beginning of Lightbox code */
 
 .gallery-block{
