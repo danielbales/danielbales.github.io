@@ -67,10 +67,8 @@ h2 {
 
 .school-area {
   margin-bottom: 16px;
-}
-
-.schoollogo {
-  padding-right: 15px;
+  padding-left: 64px;
+  padding-right: 64px;
 }
 
 .schools {
