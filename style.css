@@ -48,7 +48,8 @@ h2 {
 }
 
 .cta-bottom {
-  padding: 64px;
+  padding-top: 64px;
+  padding-bottom: 100px;
   background-color: #efefef;
 }
 

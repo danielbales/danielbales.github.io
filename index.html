@@ -93,7 +93,7 @@
       <div class="row no-gutters">
         <div class="col-md-6 col-lg-4 item zoom-on-hover">
           <a class="lightbox" href="image/sl-zeus.jpg">
-            <img class="img-fluid image" src="image/sl-zeus.jpg">
+            <img class="img-fluid image" src="image/sl-zeus.jpg" alt="Zeus">
             <span class="description">
               <span class="description-heading">Zeus</span>
               <span class="description-body">I took this photo during a brief sunny moment in San Mateo County.</span>
@@ -103,7 +103,7 @@
 
         <div class="col-md-6 col-lg-4 item zoom-on-hover">
           <a class="lightbox" href="image/sl-blackwhite.jpg">
-            <img class="img-fluid image" src="image/sl-blackwhite.jpg">
+            <img class="img-fluid image" src="image/sl-blackwhite.jpg" alt="Black & White">
             <span class="description">
               <span class="description-heading">Black & White</span>
               <span class="description-body">Taken during a calm, warm day at one of my favorite beaches in San Mateo County.</span>
@@ -113,7 +113,7 @@
 
         <div class="col-md-6 col-lg-4 item zoom-on-hover">
           <a class="lightbox" href="image/sl-cruz.jpg">
-            <img class="img-fluid image" src="image/sl-cruz.jpg">
+            <img class="img-fluid image" src="image/sl-cruz.jpg" alt="Cruzin">
             <span class="description">
               <span class="description-heading">Cruzin'</span>
               <span class="description-body">A dreamy setup for surfers, this photo was taken during a summer swell in downtown Santa Cruz.</span>
@@ -197,54 +197,7 @@
       </div>
     </div>
   </div>
-  </div>
-  <!-- dropdox button start
-  <div class="container text-center">
-    <div class="row">
 
-      <div class="col-lg-4">
-        <p>
-          <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <img src="image/Anvato_logo_sm.svg" alt="Anvato logo" class="img-fluid">
-          </button>
-        </p>
-        <div class="collapse text-left" id="collapseExample">
-          <div class="card card-body">
-            <h5>Anvato, Inc</h5>
-            <p>Acquired by Google in 2016, Anvato's end-to-end vide streaming platform combines live and on-demand video publishing, broadcast-quality distribution, reporting, & monetization both for web & mobile. The SaaS platform is used by the
-              largest
-              broadcasters in the United States.</p>
-            <p>The website is a custom-made Wordpress site, running on HTML/CSS/JavaScript/PHP.</p>
-            <a href="https://www.anvato.com" target="_blank">
-              <p>Visit website</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <p>
-          <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-            <img src="image/scimage-logo.png" alt="Anvato logo" class="img-fluid">
-          </button>
-        </p>
-        <div class="collapse text-left" id="collapseExample1">
-          <div class="card card-body">
-            <h5>ScImage, Inc</h5>
-            <p>Acquired by Google in 2016, Anvato's end-to-end vide streaming platform combines live and on-demand video publishing, broadcast-quality distribution, reporting, & monetization both for web & mobile. The SaaS platform is used by the
-              largest
-              broadcasters in the United States.</p>
-            <p>The website is a custom-made Wordpress site, running on HTML/CSS/JavaScript/PHP.</p>
-            <a href="https://www.anvato.com" target="_blank">
-              <p>Visit website</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
   <!-- dropdox button end -->
   <div class="container-fluid cta-bottom">
     <div class="row text-center">
@@ -258,21 +211,25 @@
   </div>
   <!-- Navbar start -->
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+  <!-- Footer Start -->
+  <nav class="navbar fixed-bottom navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="index.html"><img src="image/Daniel-Bales-logo.svg" width="177" height="28" class="d-inline-block align-top" alt="brand logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="image/Daniel-Bales-logo.svg" width="177" height="28" class="d-inline-block align-top" alt="brand logo"></a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mt-2 mt-lg-0 ml-auto">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="About.html">About Me <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="work-experience.html">Resume</a>
+          <a class="nav-link" href="photography.html">Photography</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="photography.html">Photography</a>
+          <a class="nav-link" href="work-experience.html">Resume</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contact-me.html">Contact</a>
