@@ -35,14 +35,9 @@ h2 {
   margin-bottom: 16px;
 }
 
-.mdl-btn-spacing {
-  padding-top: 16px;
-  padding-bottom: 32px;
-}
-
 .row-spacing {
-  padding-top: 32px;
-  padding-bottom: 64px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .cta-bottom {
@@ -60,6 +55,13 @@ h2 {
 .contactpage {
   padding-top: 225px;
   padding-bottom: 225px;
+  background-image: url(image/bg-img.jpg);
+  color: white;
+}
+
+.resume-page-quote {
+  padding-top: 64px;
+  padding-bottom: 64px;
   background-image: url(image/bg-img.jpg);
   color: white;
 }
