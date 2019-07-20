@@ -35,6 +35,11 @@ h2 {
   margin-bottom: 16px;
 }
 
+.mdl-btn-spacing {
+  padding-top: 16px;
+  padding-bottom: 32px;
+}
+
 .row-spacing {
   padding-top: 16px;
   padding-bottom: 16px;
