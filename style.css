@@ -61,9 +61,18 @@ h2 {
 }
 
 .contactpage {
-  padding-top: 225px;
-  padding-bottom: 225px;
+  position: absolute;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+
   background-image: url(image/bg-img.jpg);
+  color: white;
+}
+
+.contactpagetext {
+  padding-top: 64px;
+  padding-bottom: 64px;
   color: white;
 }
 
