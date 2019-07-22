@@ -6,6 +6,7 @@ body {
 
 .hp-header-text {
   text-align: center;
+
 }
 
 h2 {
@@ -32,9 +33,7 @@ h2 {
 
 .companylogo {
   margin-bottom: 16px;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
+
 }
 
 .mdl-btn-spacing {
@@ -48,7 +47,7 @@ h2 {
 }
 
 .cta-bottom {
-  padding-top: 64px;
+  padding-top: 16px;
   padding-bottom: 100px;
   background-color: #efefef;
 }
@@ -65,7 +64,6 @@ h2 {
   /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
-
   background-image: url(image/bg-img.jpg);
   color: white;
 }
