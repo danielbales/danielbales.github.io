@@ -69,13 +69,11 @@ h2 {
   min-width: 100%;
   min-height: 100%;
   background-image: url(image/bg-img.jpg);
-  color: white;
 }
 
 .contactpagetext {
   padding-top: 64px;
   padding-bottom: 64px;
-  color: white;
 }
 
 .resume-page-quote {
