@@ -17,6 +17,10 @@ h2 {
   overflow: visible;
 }
 
+.head-logo {
+  overflow: visible;
+}
+
 /* Make the image fully responsive */
 .carousel-inner img {
   width: 100%;
