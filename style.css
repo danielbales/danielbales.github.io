@@ -64,10 +64,8 @@ h2 {
 }
 
 .contactpage {
-  position: absolute;
-  /* Preserve aspet ratio */
-  min-width: 100%;
-  min-height: 100%;
+  height: 100vh;
+  width: 100vw;
   background-image: url(image/bg-img.jpg);
 }
 
