@@ -182,3 +182,7 @@ body {
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+.weather-area {
+  color: #343a40;
+}
