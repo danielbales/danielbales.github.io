@@ -10,6 +10,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="image/brand-fav.png" type="image/x-icon" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script src="https://api4.windy.com/assets/libBoot.js"></script>
+  <style>
+    #windy {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
 </head>
 
 <body>
@@ -228,6 +236,15 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-10 windyarea border rounded">
+            <div id="windy">
+            </div>
+        </div>
+    </div>
+  </div>
   <!-- Navbar start -->
 
   <!-- Footer Start -->
@@ -276,6 +293,38 @@
     baguetteBox.run('.compact-gallery', {
       animation: 'slideIn'
     });
+  </script>
+  <script>
+    const options = {
+
+      // Required: API key
+      key: 'tLApkJpBpxiOEN6j15ohgF1YIYHQdjhn',
+
+      // Put additional console output
+      verbose: true,
+
+      // Optional: Initial state of the map
+      lat: 37.6,
+      lon: -122.5,
+      zoom: 7,
+    }
+
+    // Initialize Windy API
+    windyInit(options, windyAPI => {
+      // windyAPI is ready, and contain 'map', 'store',
+      // 'picker' and other usefull stuff
+
+      const {
+        map
+      } = windyAPI
+      // .map is instance of Leaflet map
+
+      L.popup()
+        .setLatLng([37.6, -122.5])
+        .setContent("My surf zone!")
+        .openOn(map);
+
+    })
   </script>
 </body>
 
