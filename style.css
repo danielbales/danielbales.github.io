@@ -177,3 +177,8 @@ h2 {
 .education-row {
   margin-bottom: 0px;
 }
+
+#windy {
+  width: 100%;
+  height: 300px;
+}
