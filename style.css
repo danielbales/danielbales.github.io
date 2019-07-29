@@ -20,6 +20,10 @@ h2 {
   overflow: visible;
 }
 
+.programming-skills {
+  display: grid;
+}
+
 /* Make the image fully responsive */
 .carousel-inner img {
   width: 100%;
