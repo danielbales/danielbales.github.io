@@ -9,7 +9,7 @@ if (hourNow > 18) {
 } else if (hourNow > 0) {
   greeting = "Good morning!";
 } else {
-  greeting = "Welcome!";
+  greeting = "Hi!";
 }
 
 document.write("<h1>" + greeting + "</h1>");
