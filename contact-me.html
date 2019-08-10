@@ -9,6 +9,22 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="image/brand-fav.png" type="image/x-icon" />
+  <script type="text/javascript">
+    var $form = $('form#test-form'),
+      url = 'https://script.google.com/macros/s/AKfycbzfxXWLa4RoJNrJWpWGuBSWAKUcBMN73kaapGBkLP80Mj_11dY/exec'
+
+    $('#submit-form').on('click', function(e) {
+      e.preventDefault();
+      var jqxhr = $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        data: $form.serializeObject()
+      }).success(
+        // do something
+      );
+    })
+  </script>
 </head>
 
 <body>
@@ -59,28 +75,13 @@
         <h1 class="display-4">Lorem Ipsum!</h1>
         <p class="lead">Send me an email and let me know what's on your mind.</p>
         <hr class="my-4">
-        <a class="btn btn-primary" href="mailto:danielfbales@gmail.com" role="button">Send email</a>
-        <script type="text/javascript">
-          var $form = $('form#test-form'),
-            url = 'https://script.google.com/macros/s/AKfycbzfxXWLa4RoJNrJWpWGuBSWAKUcBMN73kaapGBkLP80Mj_11dY/exec'
+        <!-- <a class="btn btn-primary" href="mailto:danielfbales@gmail.com" role="button">Send email</a> -->
 
-          $('#submit-form').on('click', function(e) {
-            e.preventDefault();
-            var jqxhr = $.ajax({
-              url: url,
-              method: "GET",
-              dataType: "json",
-              data: $form.serializeObject()
-            }).success(
-              // do something
-            );
-          })
-        </script>
         <form id="test-form">
 
           <div>
             <label>Field 1</label>
-            <input type="text" name="form_field_1" placeholder="Field 1" />
+            <input type="text" name="form_field_1" placeholder="Field Test" />
           </div>
 
           <div>
