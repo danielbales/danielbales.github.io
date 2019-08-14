@@ -47,6 +47,18 @@ body {
   text-align: center;
 }
 
+.contactpage-form-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contactpage-form {
+  display: grid;
+  border: 0.5px solid #bcbcbc;
+  border-radius: 18px;
+  padding: 32px;
+}
+
 .resume-page-quote {
   padding-top: 64px;
   padding-bottom: 64px;
