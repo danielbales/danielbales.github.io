@@ -60,17 +60,18 @@
         <p class="lead">Send me an email and let me know what's on your mind.</p>
         <hr class="my-4">
 
-        <script type="text/javascript">
-          var submitted = false;
-        </script>
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you.html';}"></iframe>
-
 
         <div class="container">
           <div class="row">
             <div class="col-10 contactpage-form-container">
 
-              <form class="form contactpage-form" action="https://docs.google.com/forms/u/2/d/e/1FAIpQLSe2lLIjGFT01bifGGFIkHTkHtrfmIjWHHJbepZoOcGbtdBHhw/formResponse">
+
+              <script type="text/javascript">
+                var submitted = false;
+              </script>
+              <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you.html';}"></iframe>
+
+              <form class="form contactpage-form" action="https://docs.google.com/forms/u/2/d/e/1FAIpQLSe2lLIjGFT01bifGGFIkHTkHtrfmIjWHHJbepZoOcGbtdBHhw/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
                 <label>Name</label>
                 <input name="entry.1723529222" type="text" class="form-control companylogo" />
 
@@ -85,6 +86,7 @@
                     <input class="btn btn-primary active standardimage form-control" type="submit" value="Send" />
                   </div>
                 </div>
+
               </form>
 
             </div>
