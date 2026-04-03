@@ -168,3 +168,239 @@ body {
 .icon-margin {
   margin-right: 10px;
 }
+
+/* =====================
+   REDESIGN 2025
+   ===================== */
+
+:root {
+  --navy: #0d1b2a;
+  --slate: #1b2d45;
+  --accent: #2d7dd2;
+  --accent-light: #4a9ade;
+  --text: #2c3e50;
+  --muted: #6c757d;
+  --surface: #f8f9fa;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: var(--text);
+}
+
+/* Nav */
+.db-nav {
+  background-color: var(--navy) !important;
+  padding: 0.75rem 1.5rem;
+}
+
+.db-brand {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--white) !important;
+}
+
+/* Hero */
+.db-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+  color: var(--white);
+  padding: 80px 0 80px;
+}
+
+.db-hero-photo {
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-height: 440px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.db-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+}
+
+.db-hero-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.db-hero-tagline {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1.25rem;
+}
+
+.db-hero-bio {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+}
+
+.db-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.db-btn-primary {
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.db-btn-primary:hover {
+  background-color: var(--accent-light);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.db-btn-outline {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.db-btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* What I Do section */
+.db-section {
+  padding: 72px 0;
+  background: var(--white);
+}
+
+.db-section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: 2.5rem;
+  color: var(--navy);
+}
+
+.db-card {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 2rem;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.db-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.db-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.db-card h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--navy);
+}
+
+.db-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* About strip */
+.db-about-strip {
+  background: var(--surface);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 56px 0;
+}
+
+.db-about-strip h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.db-about-strip p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.db-btn-light {
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  border: none;
+  transition: background 0.2s;
+}
+
+.db-btn-light:hover {
+  background: var(--slate);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Footer */
+.db-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  padding: 32px 0;
+  font-size: 0.875rem;
+}
+
+.db-footer-links a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.db-footer-links a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 767px) {
+  .db-hero {
+    padding: 48px 0;
+  }
+
+  .db-hero-name {
+    font-size: 2.2rem;
+  }
+
+  .db-hero-tagline {
+    font-size: 1.05rem;
+  }
+}
