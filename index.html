@@ -325,6 +325,11 @@
     font-size: 0.85rem; color: #555;
     text-align: center; margin: 0.5rem 0 1.5rem;
   }
+  .pong-touch-hint { display: none; }
+  @media (pointer: coarse) {
+    .pong-touch-hint { display: block; }
+    .pong-mouse-hint { display: none; }
+  }
   .pong-wrapper {
     position: relative;
     display: flex; flex-direction: column;
@@ -426,7 +431,8 @@
     <div class="level-badge cyan">BONUS ROUND</div>
   </div>
   <h2 class="pong-title">PONG</h2>
-  <p class="pong-instructions">Move your mouse or drag to control the paddle. First to 5 wins.</p>
+  <p class="pong-instructions pong-mouse-hint">Move your mouse to control the paddle. First to 5 wins.</p>
+  <p class="pong-instructions pong-touch-hint">Drag to control the paddle. It sits above your finger. First to 5 wins.</p>
   <div class="pong-wrapper">
     <canvas id="pongCanvas" width="600" height="400"></canvas>
     <div class="pong-scores">
@@ -604,7 +610,8 @@
   const WIN_SCORE = 5;
 
   const ball = { x: W/2, y: H/2, r: 6, dx: 4, dy: 3, speed: 4 };
-  const paddleH = 60, paddleW = 10;
+  const isTouch = matchMedia('(pointer: coarse)').matches;
+  const paddleH = isTouch ? 80 : 60, paddleW = 10;
   const player = { x: 15, y: H/2 - paddleH/2, w: paddleW, h: paddleH, score: 0 };
   const cpu = { x: W - 15 - paddleW, y: H/2 - paddleH/2, w: paddleW, h: paddleH, score: 0, speed: 3.2 };
 
@@ -620,17 +627,21 @@
     if (!gameStarted) gameStarted = true;
   });
 
-  // Touch control
+  // Touch control - offset paddle 50px above finger so it's visible
+  const TOUCH_OFFSET = 50;
   canvas.addEventListener('touchmove', (e) => {
     e.preventDefault();
     const rect = canvas.getBoundingClientRect();
     const scaleY = H / rect.height;
-    mouseY = (e.touches[0].clientY - rect.top) * scaleY;
+    mouseY = (e.touches[0].clientY - rect.top) * scaleY - TOUCH_OFFSET;
     if (!gameStarted) gameStarted = true;
   }, { passive: false });
 
   canvas.addEventListener('touchstart', (e) => {
     e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const scaleY = H / rect.height;
+    mouseY = (e.touches[0].clientY - rect.top) * scaleY - TOUCH_OFFSET;
     if (!gameStarted) gameStarted = true;
   }, { passive: false });
 
@@ -764,7 +775,7 @@
       ctx.fillStyle = 'rgba(255,225,0,0.7)';
       ctx.font = '12px "Press Start 2P"';
       ctx.textAlign = 'center';
-      ctx.fillText('MOVE MOUSE TO START', W / 2, H / 2 + 50);
+      ctx.fillText(isTouch ? 'TAP TO START' : 'MOVE MOUSE TO START', W / 2, H / 2 + 50);
     }
   }
 
