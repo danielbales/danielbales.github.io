@@ -305,6 +305,82 @@
     font-size: 0.5rem; color: #555;
   }
 
+  /* PONG */
+  .pong-section {
+    padding: 5rem 2rem;
+    display: flex; flex-direction: column;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  .pong-header { margin-bottom: 1.5rem; }
+  .pong-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    color: var(--cyan);
+    text-shadow: 0 0 10px rgba(0,255,255,0.2);
+    text-align: center;
+    line-height: 1.8;
+  }
+  .pong-instructions {
+    font-size: 0.85rem; color: #555;
+    text-align: center; margin: 0.5rem 0 1.5rem;
+  }
+  .pong-wrapper {
+    position: relative;
+    display: flex; flex-direction: column;
+    align-items: center;
+  }
+  #pongCanvas {
+    border: 2px solid rgba(0,255,255,0.2);
+    border-radius: 4px;
+    background: #0a0a15;
+    display: block;
+    max-width: 100%;
+    touch-action: none;
+    cursor: none;
+  }
+  .pong-scores {
+    display: flex; gap: 2rem;
+    align-items: center;
+    margin-top: 1rem;
+    font-family: 'Press Start 2P', monospace;
+  }
+  .pong-score { font-size: 1.5rem; }
+  .cyan-text { color: var(--cyan); text-shadow: 0 0 10px rgba(0,255,255,0.3); }
+  .magenta-text { color: var(--magenta); text-shadow: 0 0 10px rgba(255,0,255,0.3); }
+  .pong-vs { font-size: 0.5rem; color: #555; }
+  .pong-labels {
+    display: flex; gap: 4rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.45rem; color: #555;
+    margin-top: 0.25rem;
+  }
+  .pong-message {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    color: var(--yellow);
+    text-shadow: 0 0 10px rgba(255,225,0,0.3);
+    margin-top: 1rem;
+    min-height: 1.5rem;
+    text-align: center;
+  }
+  .pong-restart {
+    margin-top: 0.75rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    padding: 0.6rem 1.5rem;
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .pong-restart:hover {
+    box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    transform: scale(1.05);
+  }
+
   footer {
     text-align: center; padding: 1.5rem;
     font-family: 'Press Start 2P', monospace;
@@ -344,6 +420,29 @@
   <div class="insert-coin">- SCROLL TO START -</div>
 </section>
 
+<!-- PONG GAME -->
+<section class="pong-section">
+  <div class="pong-header">
+    <div class="level-badge cyan">BONUS ROUND</div>
+  </div>
+  <h2 class="pong-title">PONG</h2>
+  <p class="pong-instructions">Move your mouse or drag to control the paddle. First to 5 wins.</p>
+  <div class="pong-wrapper">
+    <canvas id="pongCanvas" width="600" height="400"></canvas>
+    <div class="pong-scores">
+      <span id="playerScore" class="pong-score cyan-text">0</span>
+      <span class="pong-vs">VS</span>
+      <span id="cpuScore" class="pong-score magenta-text">0</span>
+    </div>
+    <div class="pong-labels">
+      <span>YOU</span>
+      <span>CPU</span>
+    </div>
+    <div id="pongMessage" class="pong-message"></div>
+    <button id="pongRestart" class="pong-restart" style="display:none;">PLAY AGAIN</button>
+  </div>
+</section>
+
 <!-- LEVEL 1: POWER-UPS -->
 <section class="level">
   <div class="level-header">
@@ -355,7 +454,7 @@
   <div class="powerups">
     <div class="powerup">
       <span class="powerup-icon">&#9654;</span>
-      <h3>ANIMATION<br>PRODUCTION</h3>
+      <h3>VIDEO<br>PRODUCTION</h3>
       <p>Sharp Eye Animation. Explainers, product demos, brand films. 500+ videos for Apple, IKEA, Sephora, Walmart.</p>
     </div>
     <div class="powerup">
@@ -427,7 +526,7 @@
 
   <div class="xp-section">
     <div class="xp-row">
-      <div class="xp-label">ANIMATION<br>PRODUCTION</div>
+      <div class="xp-label">VIDEO<br>PRODUCTION</div>
       <div class="xp-track"><div class="xp-fill cyan" style="width:95%;"></div></div>
       <div class="xp-pct">MAX</div>
     </div>
@@ -497,6 +596,186 @@
     s.style.width = s.style.height = (1 + Math.random() * 2) + 'px';
     starsEl.appendChild(s);
   }
+
+  // PONG GAME
+  const canvas = document.getElementById('pongCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const WIN_SCORE = 5;
+
+  const ball = { x: W/2, y: H/2, r: 6, dx: 4, dy: 3, speed: 4 };
+  const paddleH = 60, paddleW = 10;
+  const player = { x: 15, y: H/2 - paddleH/2, w: paddleW, h: paddleH, score: 0 };
+  const cpu = { x: W - 15 - paddleW, y: H/2 - paddleH/2, w: paddleW, h: paddleH, score: 0, speed: 3.2 };
+
+  let gameOver = false;
+  let gameStarted = false;
+  let mouseY = H / 2;
+
+  // Mouse control
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const scaleY = H / rect.height;
+    mouseY = (e.clientY - rect.top) * scaleY;
+    if (!gameStarted) gameStarted = true;
+  });
+
+  // Touch control
+  canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const scaleY = H / rect.height;
+    mouseY = (e.touches[0].clientY - rect.top) * scaleY;
+    if (!gameStarted) gameStarted = true;
+  }, { passive: false });
+
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (!gameStarted) gameStarted = true;
+  }, { passive: false });
+
+  // Restart
+  document.getElementById('pongRestart').addEventListener('click', () => {
+    player.score = 0; cpu.score = 0;
+    document.getElementById('playerScore').textContent = '0';
+    document.getElementById('cpuScore').textContent = '0';
+    document.getElementById('pongMessage').textContent = '';
+    document.getElementById('pongRestart').style.display = 'none';
+    gameOver = false;
+    gameStarted = false;
+    resetBall();
+  });
+
+  function resetBall() {
+    ball.x = W / 2;
+    ball.y = H / 2;
+    ball.speed = 4;
+    ball.dx = (Math.random() > 0.5 ? 1 : -1) * ball.speed;
+    ball.dy = (Math.random() * 2 - 1) * ball.speed;
+  }
+
+  function update() {
+    if (gameOver || !gameStarted) return;
+
+    // Player paddle follows mouse
+    player.y = mouseY - player.h / 2;
+    player.y = Math.max(0, Math.min(H - player.h, player.y));
+
+    // CPU AI
+    const cpuCenter = cpu.y + cpu.h / 2;
+    const diff = ball.y - cpuCenter;
+    if (Math.abs(diff) > cpu.speed) {
+      cpu.y += diff > 0 ? cpu.speed : -cpu.speed;
+    }
+    cpu.y = Math.max(0, Math.min(H - cpu.h, cpu.y));
+
+    // Ball movement
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    // Top/bottom bounce
+    if (ball.y - ball.r <= 0 || ball.y + ball.r >= H) {
+      ball.dy *= -1;
+      ball.y = ball.y - ball.r <= 0 ? ball.r : H - ball.r;
+    }
+
+    // Player paddle collision
+    if (ball.dx < 0 &&
+        ball.x - ball.r <= player.x + player.w &&
+        ball.x + ball.r >= player.x &&
+        ball.y >= player.y && ball.y <= player.y + player.h) {
+      ball.dx = Math.abs(ball.dx);
+      const hit = (ball.y - (player.y + player.h / 2)) / (player.h / 2);
+      ball.dy = hit * 5;
+      ball.speed = Math.min(ball.speed + 0.15, 8);
+      ball.dx = ball.dx > 0 ? ball.speed : -ball.speed;
+    }
+
+    // CPU paddle collision
+    if (ball.dx > 0 &&
+        ball.x + ball.r >= cpu.x &&
+        ball.x - ball.r <= cpu.x + cpu.w &&
+        ball.y >= cpu.y && ball.y <= cpu.y + cpu.h) {
+      ball.dx = -Math.abs(ball.dx);
+      const hit = (ball.y - (cpu.y + cpu.h / 2)) / (cpu.h / 2);
+      ball.dy = hit * 5;
+      ball.speed = Math.min(ball.speed + 0.15, 8);
+      ball.dx = ball.dx > 0 ? ball.speed : -ball.speed;
+    }
+
+    // Scoring
+    if (ball.x - ball.r <= 0) {
+      cpu.score++;
+      document.getElementById('cpuScore').textContent = cpu.score;
+      if (cpu.score >= WIN_SCORE) endGame('GAME OVER');
+      else resetBall();
+    }
+    if (ball.x + ball.r >= W) {
+      player.score++;
+      document.getElementById('playerScore').textContent = player.score;
+      if (player.score >= WIN_SCORE) endGame('YOU WIN!');
+      else resetBall();
+    }
+  }
+
+  function endGame(msg) {
+    gameOver = true;
+    document.getElementById('pongMessage').textContent = msg;
+    document.getElementById('pongRestart').style.display = 'inline-block';
+  }
+
+  function draw() {
+    ctx.fillStyle = '#0a0a15';
+    ctx.fillRect(0, 0, W, H);
+
+    // Center line
+    ctx.setLineDash([8, 8]);
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(W / 2, 0);
+    ctx.lineTo(W / 2, H);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Ball
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = 'rgba(255,255,255,0.5)';
+    ctx.shadowBlur = 10;
+    ctx.fillRect(ball.x - ball.r, ball.y - ball.r, ball.r * 2, ball.r * 2);
+    ctx.shadowBlur = 0;
+
+    // Player paddle (cyan)
+    ctx.fillStyle = '#00ffff';
+    ctx.shadowColor = 'rgba(0,255,255,0.4)';
+    ctx.shadowBlur = 12;
+    ctx.fillRect(player.x, player.y, player.w, player.h);
+    ctx.shadowBlur = 0;
+
+    // CPU paddle (magenta)
+    ctx.fillStyle = '#ff00ff';
+    ctx.shadowColor = 'rgba(255,0,255,0.4)';
+    ctx.shadowBlur = 12;
+    ctx.fillRect(cpu.x, cpu.y, cpu.w, cpu.h);
+    ctx.shadowBlur = 0;
+
+    // Start prompt
+    if (!gameStarted && !gameOver) {
+      ctx.fillStyle = 'rgba(255,225,0,0.7)';
+      ctx.font = '12px "Press Start 2P"';
+      ctx.textAlign = 'center';
+      ctx.fillText('MOVE MOUSE TO START', W / 2, H / 2 + 50);
+    }
+  }
+
+  function pongLoop() {
+    update();
+    draw();
+    requestAnimationFrame(pongLoop);
+  }
+
+  resetBall();
+  pongLoop();
 
   // Countdown timer
   let count = 9;
