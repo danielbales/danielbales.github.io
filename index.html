@@ -1,117 +1,513 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="Daniel Bales — Product Marketing Manager, entrepreneur, and creator based in the San Francisco Bay Area.">
-  <meta name="keywords" content="Daniel Bales, Product Marketing, Sharp Eye Animation, Surf Clips TV">
-  <meta name="google-site-verification" content="HbkxrZtLBIIKBjbW9fQhxYWW_VkbB9nXRQ42lCTAYSI" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Daniel Bales</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" href="image/brand-fav.png" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daniel Bales - Product Marketing Manager, entrepreneur, and creator based in Carmel, CA.">
+<meta name="google-site-verification" content="HbkxrZtLBIIKBjbW9fQhxYWW_VkbB9nXRQ42lCTAYSI" />
+<link rel="icon" href="image/brand-fav.png" type="image/x-icon" />
+<title>Daniel Bales</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Inter:wght@400;600;700;800&display=swap');
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a15;
+    --green: #39ff14;
+    --cyan: #00ffff;
+    --yellow: #ffe100;
+    --magenta: #ff00ff;
+    --red: #ff3333;
+    --orange: #ff8800;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: #eee;
+    overflow-x: hidden;
+  }
+
+  /* STARFIELD */
+  .stars {
+    position: fixed; inset: 0; z-index: 0;
+    overflow: hidden; pointer-events: none;
+  }
+  .star {
+    position: absolute; width: 2px; height: 2px;
+    background: rgba(255,255,255,0.4); border-radius: 50%;
+    animation: twinkle linear infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  /* SCANLINES GLOBAL */
+  .global-scan {
+    position: fixed; inset: 0; z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+    );
+  }
+
+  /* HEADER / TITLE SCREEN */
+  .title-screen {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative; z-index: 1;
+  }
+  .pixel-border {
+    border: 3px solid var(--cyan);
+    box-shadow: 0 0 15px rgba(0,255,255,0.2), inset 0 0 15px rgba(0,255,255,0.05);
+    padding: 3rem 4rem;
+    position: relative;
+  }
+  .pixel-border::before, .pixel-border::after {
+    content: ''; position: absolute;
+    width: 8px; height: 8px; background: var(--cyan);
+  }
+  .pixel-border::before { top: -4px; left: -4px; }
+  .pixel-border::after { bottom: -4px; right: -4px; }
+
+  .title-screen h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0,255,255,0.4);
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+  }
+  .title-screen h1 .yellow { color: var(--yellow); text-shadow: 0 0 20px rgba(255,225,0,0.4); }
+
+  .subtitle {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    color: #888;
+    margin-top: 1.5rem;
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+
+  .insert-coin {
+    margin-top: 2.5rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    color: var(--yellow);
+    text-shadow: 0 0 10px rgba(255,225,0,0.3);
+    animation: coinBlink 1.5s step-end infinite;
+  }
+  @keyframes coinBlink { 50% { opacity: 0; } }
+
+  /* SCORE BAR */
+  .score-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+    background: rgba(10,10,21,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(0,255,255,0.15);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+  }
+  .score-bar .label { color: #666; }
+  .score-bar .val { color: var(--cyan); }
+  .score-bar .hi { color: var(--yellow); }
+
+  /* LEVEL SECTIONS */
+  .level {
+    padding: 5rem 2rem;
+    position: relative; z-index: 1;
+    max-width: 900px; margin: 0 auto;
+  }
+  .level-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .level-badge {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid;
+    display: inline-block;
+  }
+  .level-badge.cyan { border-color: var(--cyan); color: var(--cyan); }
+  .level-badge.green { border-color: var(--green); color: var(--green); }
+  .level-badge.magenta { border-color: var(--magenta); color: var(--magenta); }
+  .level-badge.yellow { border-color: var(--yellow); color: var(--yellow); }
+
+  .level h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    line-height: 1.8;
+  }
+  .level h2.cyan { color: var(--cyan); text-shadow: 0 0 10px rgba(0,255,255,0.2); }
+  .level h2.green { color: var(--green); text-shadow: 0 0 10px rgba(57,255,20,0.2); }
+  .level h2.magenta { color: var(--magenta); text-shadow: 0 0 10px rgba(255,0,255,0.2); }
+  .level h2.yellow { color: var(--yellow); text-shadow: 0 0 10px rgba(255,225,0,0.2); }
+
+  .level p.desc {
+    font-size: 0.95rem; color: #888;
+    line-height: 1.8; max-width: 600px;
+    margin-top: 0.75rem;
+  }
+
+  /* POWER-UP CARDS */
+  .powerups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem; margin-top: 2rem;
+  }
+  .powerup {
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 4px; padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .powerup:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    transform: translateY(-4px);
+  }
+  .powerup-icon {
+    font-size: 2rem; margin-bottom: 0.75rem;
+    display: block;
+  }
+  .powerup h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem; margin-bottom: 0.5rem;
+    color: var(--cyan); line-height: 1.6;
+  }
+  .powerup p {
+    font-size: 0.85rem; color: #777; line-height: 1.6;
+  }
+
+  /* HIGH SCORE TABLE */
+  .highscore-table {
+    width: 100%; margin-top: 2rem;
+    border-collapse: collapse;
+  }
+  .highscore-table thead th {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem; color: var(--green);
+    text-align: left; padding: 0.75rem 0.5rem;
+    border-bottom: 2px solid rgba(57,255,20,0.2);
+    letter-spacing: 0.05em;
+  }
+  .highscore-table tbody td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.85rem;
+  }
+  .highscore-table tbody tr {
+    transition: background 0.2s;
+  }
+  .highscore-table tbody tr:hover {
+    background: rgba(57,255,20,0.03);
+  }
+  .rank {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.55rem;
+  }
+  .rank.gold { color: var(--yellow); }
+  .rank.silver { color: #ccc; }
+  .rank.bronze { color: var(--orange); }
+  .score-val {
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem; color: var(--green);
+  }
+
+  /* XP BAR */
+  .xp-section { margin-top: 2rem; }
+  .xp-row {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .xp-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.45rem; color: #888;
+    min-width: 140px; text-align: right;
+    line-height: 1.4;
+  }
+  .xp-track {
+    flex: 1; height: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .xp-fill {
+    height: 100%;
+    border-radius: 1px;
+    position: relative;
+    transition: width 1s ease;
+  }
+  .xp-fill.cyan { background: linear-gradient(90deg, rgba(0,255,255,0.3), var(--cyan)); box-shadow: 0 0 8px rgba(0,255,255,0.3); }
+  .xp-fill.green { background: linear-gradient(90deg, rgba(57,255,20,0.3), var(--green)); box-shadow: 0 0 8px rgba(57,255,20,0.3); }
+  .xp-fill.magenta { background: linear-gradient(90deg, rgba(255,0,255,0.3), var(--magenta)); box-shadow: 0 0 8px rgba(255,0,255,0.3); }
+  .xp-fill.yellow { background: linear-gradient(90deg, rgba(255,225,0,0.3), var(--yellow)); box-shadow: 0 0 8px rgba(255,225,0,0.3); }
+  .xp-pct {
+    font-family: 'VT323', monospace;
+    font-size: 0.75rem; color: #888;
+    min-width: 40px;
+  }
+
+  /* CONTINUE / CTA */
+  .continue-screen {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+  .continue-box {
+    border: 3px solid var(--yellow);
+    box-shadow: 0 0 20px rgba(255,225,0,0.15);
+    max-width: 500px; margin: 0 auto;
+    padding: 3rem;
+  }
+  .continue-box h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    color: var(--yellow);
+    text-shadow: 0 0 15px rgba(255,225,0,0.3);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .continue-box p {
+    color: #888; font-size: 0.9rem; margin-bottom: 1.5rem;
+  }
+  .continue-box a {
+    display: inline-block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    padding: 0.75rem 2rem;
+    background: var(--yellow); color: #0a0a15;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .continue-box a:hover {
+    box-shadow: 0 0 25px rgba(255,225,0,0.4);
+    transform: scale(1.05);
+  }
+  .continue-countdown {
+    margin-top: 1.5rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.5rem; color: #555;
+  }
+
+  footer {
+    text-align: center; padding: 1.5rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.4rem; color: #444;
+    position: relative; z-index: 1;
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
 <body>
 
-  <!-- Nav -->
-  <nav class="navbar navbar-expand-md navbar-dark sticky-top db-nav">
-    <a class="navbar-brand db-brand" href="index.html">Daniel Bales</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact-me.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/danielfbales" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      </ul>
+<div class="global-scan"></div>
+
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+
+<!-- SCORE BAR -->
+<div class="score-bar">
+  <div><span class="label">PLAYER 1</span> <span class="val">DANIEL BALES</span></div>
+  <div><span class="label">HI-SCORE</span> <span class="hi">500+</span></div>
+  <div><span class="label">LEVEL</span> <span class="val">MAX</span></div>
+</div>
+
+<!-- TITLE SCREEN -->
+<section class="title-screen">
+  <div class="pixel-border">
+    <h1>
+      DANIEL<br>
+      <span class="yellow">BALES</span>
+    </h1>
+    <div class="subtitle">
+      PRODUCER // MARKETER // STRATEGIST<br>
+      META // CARMEL, CA
     </div>
-  </nav>
+  </div>
+  <div class="insert-coin">- SCROLL TO START -</div>
+</section>
 
-  <!-- Hero -->
-  <section class="db-hero">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-5 mb-4 mb-md-0">
-          <img src="image/DBinMendo.jpg" alt="Daniel Bales" class="db-hero-photo img-fluid">
-        </div>
-        <div class="col-md-7">
-          <p class="db-eyebrow">Product Marketing · Creator · Surfer</p>
-          <h1 class="db-hero-name">Daniel Bales</h1>
-          <p class="db-hero-tagline">Building brands at the intersection of technology and storytelling.</p>
-          <p class="db-hero-bio">
-            I'm a Product Marketing Manager in the tech industry with roots at Google — three times over across Google Cloud, Google Ads, and Android. Today I split my time between shipping go-to-market strategy and running two creative businesses I founded from scratch.
-          </p>
-          <div class="db-hero-links">
-            <a href="contact-me.html" class="btn db-btn-primary mr-2">Get in touch</a>
-            <a href="https://www.linkedin.com/in/danielfbales" target="_blank" rel="noopener noreferrer" class="btn db-btn-light">LinkedIn</a>
-          </div>
-        </div>
-      </div>
+<!-- LEVEL 1: POWER-UPS -->
+<section class="level">
+  <div class="level-header">
+    <div class="level-badge cyan">LEVEL 1</div>
+  </div>
+  <h2 class="cyan">SELECT YOUR POWER-UP</h2>
+  <p class="desc">Three abilities. Pick your path, or use them all.</p>
+
+  <div class="powerups">
+    <div class="powerup">
+      <span class="powerup-icon">&#9654;</span>
+      <h3>ANIMATION<br>PRODUCTION</h3>
+      <p>Sharp Eye Animation. Explainers, product demos, brand films. 500+ videos for Apple, IKEA, Sephora, Walmart.</p>
     </div>
-  </section>
-
-  <!-- What I Do -->
-  <section class="db-section">
-    <div class="container">
-      <h2 class="db-section-title">What I Do</h2>
-      <div class="row">
-
-        <div class="col-md-6 mb-4">
-          <div class="db-card">
-            <div class="db-card-icon">&#128200;</div>
-            <h4>Product Marketing</h4>
-            <p>I craft go-to-market strategy, positioning, and messaging for technology products — translating complex capabilities into stories that move markets and convert customers.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 mb-4">
-          <div class="db-card">
-            <div class="db-card-icon">&#127760;</div>
-            <h4>Sharp Eye Animation</h4>
-            <p>I founded Sharp Eye Animation to produce high-quality animated video content. We help brands explain, inspire, and sell through the power of motion.</p>
-          </div>
-        </div>
-
-      </div>
+    <div class="powerup">
+      <span class="powerup-icon">&#9650;</span>
+      <h3>PRODUCT<br>MARKETING</h3>
+      <p>Google and Meta. GTM strategy, positioning, and launch playbooks across Ads, Cloud, Hardware, and more.</p>
     </div>
-  </section>
-
-  <!-- About strip -->
-  <section class="db-about-strip">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h3>San Francisco Bay Area</h3>
-          <p class="mb-0">
-            When I'm not in front of a screen, I'm in the water. Surfing drives how I see the world — reading conditions, adapting fast, and committing fully. The same instincts that make a good session make good product marketing.
-          </p>
-        </div>
-        <div class="col-md-4 text-md-right mt-3 mt-md-0">
-          <a href="contact-me.html" class="btn db-btn-light">Say hello &rarr;</a>
-        </div>
-      </div>
+    <div class="powerup">
+      <span class="powerup-icon">&#9670;</span>
+      <h3>CREATIVE<br>STRATEGY</h3>
+      <p>Find the story. Fix the message. Build content that converts. Consulting for growth teams.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="db-footer">
-    <div class="container text-center">
-      <p class="mb-1">&copy; 2026 Daniel Bales</p>
-      <p class="db-footer-links">
-        <a href="contact-me.html">Contact</a>
-        &nbsp;&middot;&nbsp;
-        <a href="https://www.linkedin.com/in/danielfbales" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </p>
+<!-- LEVEL 2: HIGH SCORES -->
+<section class="level">
+  <div class="level-header">
+    <div class="level-badge green">LEVEL 2</div>
+  </div>
+  <h2 class="green">HIGH SCORE TABLE</h2>
+  <p class="desc">Career achievements, ranked.</p>
+
+  <table class="highscore-table">
+    <thead>
+      <tr>
+        <th>RANK</th>
+        <th>ACHIEVEMENT</th>
+        <th>SCORE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="rank gold">1ST</span></td>
+        <td>Videos Produced</td>
+        <td><span class="score-val">500+</span></td>
+      </tr>
+      <tr>
+        <td><span class="rank silver">2ND</span></td>
+        <td>Enterprise Clients</td>
+        <td><span class="score-val">50+</span></td>
+      </tr>
+      <tr>
+        <td><span class="rank bronze">3RD</span></td>
+        <td>Big Tech Companies</td>
+        <td><span class="score-val">2</span></td>
+      </tr>
+      <tr>
+        <td><span class="rank" style="color:#888;">4TH</span></td>
+        <td>Companies Founded</td>
+        <td><span class="score-val">2</span></td>
+      </tr>
+      <tr>
+        <td><span class="rank" style="color:#888;">5TH</span></td>
+        <td>Waves Surfed</td>
+        <td><span class="score-val">???</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- LEVEL 3: SKILL TREE -->
+<section class="level">
+  <div class="level-header">
+    <div class="level-badge magenta">LEVEL 3</div>
+  </div>
+  <h2 class="magenta">SKILL TREE</h2>
+  <p class="desc">Experience points earned across disciplines.</p>
+
+  <div class="xp-section">
+    <div class="xp-row">
+      <div class="xp-label">ANIMATION<br>PRODUCTION</div>
+      <div class="xp-track"><div class="xp-fill cyan" style="width:95%;"></div></div>
+      <div class="xp-pct">MAX</div>
     </div>
-  </footer>
+    <div class="xp-row">
+      <div class="xp-label">PRODUCT<br>MARKETING</div>
+      <div class="xp-track"><div class="xp-fill green" style="width:95%;"></div></div>
+      <div class="xp-pct">MAX</div>
+    </div>
+    <div class="xp-row">
+      <div class="xp-label">GTM<br>STRATEGY</div>
+      <div class="xp-track"><div class="xp-fill magenta" style="width:85%;"></div></div>
+      <div class="xp-pct">LV 9</div>
+    </div>
+    <div class="xp-row">
+      <div class="xp-label">CREATIVE<br>DIRECTION</div>
+      <div class="xp-track"><div class="xp-fill yellow" style="width:88%;"></div></div>
+      <div class="xp-pct">LV 9</div>
+    </div>
+    <div class="xp-row">
+      <div class="xp-label">STORYTELLING</div>
+      <div class="xp-track"><div class="xp-fill cyan" style="width:90%;"></div></div>
+      <div class="xp-pct">LV 9</div>
+    </div>
+  </div>
+</section>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- LEVEL 4: BACKSTORY -->
+<section class="level">
+  <div class="level-header">
+    <div class="level-badge yellow">LEVEL 4</div>
+  </div>
+  <h2 class="yellow">PLAYER BACKSTORY</h2>
+  <p class="desc">
+    Joined Google in 2016. Launched products across Ads, Cloud, and Hardware - learning how to take complex technology and make millions of people care about it. Now at Meta, still shipping at scale.
+  </p>
+  <p class="desc" style="margin-top: 1rem;">
+    Also built Sharp Eye Animation to fix the storytelling gap. 500+ videos later, the studio works with enterprise teams at Apple, IKEA, Sephora, and beyond. Based in Carmel, CA. Still grinding.
+  </p>
+</section>
+
+<!-- CONTINUE? -->
+<section class="continue-screen">
+  <div class="continue-box">
+    <h2>CONTINUE?</h2>
+    <p>Animation, marketing strategy, or creative consulting.</p>
+    <a href="mailto:daniel@sharpeyeanimation.com">INSERT COIN</a>
+    <div class="continue-countdown">9 ... 8 ... 7 ...</div>
+  </div>
+</section>
+
+<footer>
+  (C) 2026 BALES ENTERTAINMENT<br>
+  CARMEL, CA<br>
+  ALL WAVES RESERVED
+</footer>
+
+<script>
+  // Generate starfield
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDuration = (2 + Math.random() * 4) + 's';
+    s.style.animationDelay = Math.random() * 3 + 's';
+    s.style.width = s.style.height = (1 + Math.random() * 2) + 'px';
+    starsEl.appendChild(s);
+  }
+
+  // Countdown timer
+  let count = 9;
+  const cd = document.querySelector('.continue-countdown');
+  setInterval(() => {
+    count--;
+    if (count < 0) count = 9;
+    let nums = [];
+    for (let i = count; i >= Math.max(0, count-2); i--) nums.push(i);
+    cd.textContent = nums.join(' ... ') + ' ...';
+  }, 1000);
+</script>
 </body>
-
 </html>
